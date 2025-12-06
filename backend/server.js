@@ -12,7 +12,18 @@ dotenv.config();
 const app = express();
 
 app.use(cors({
-  origin: process.env.FRONTEND_URL || '*',
+  origin: (origin, callback) => {
+    const allowedOrigins = [
+      'https://fitness-diet-traker.vercel.app',
+      'http://localhost:5173',
+      process.env.FRONTEND_URL
+    ];
+    if (!origin || allowedOrigins.some(allowed => origin === allowed || origin === allowed + '/')) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   credentials: true
 }));
 app.use(express.json());

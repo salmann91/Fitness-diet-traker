@@ -5,6 +5,7 @@ import { ThemeContext, ThemeProvider } from './context/ThemeContext';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import Profile from './pages/Profile';
+import Footer from './components/Footer';
 
 function PrivateRoute({ children }) {
   const { user, loading } = useContext(AuthContext);
@@ -73,6 +74,7 @@ function App() {
             <Route path="/profile" element={<PrivateRoute><Profile /></PrivateRoute>} />
             <Route path="/" element={<Navigate to="/dashboard" />} />
           </Routes>
+          <Footer />
         </BrowserRouter>
       </AuthProvider>
     </ThemeProvider>
