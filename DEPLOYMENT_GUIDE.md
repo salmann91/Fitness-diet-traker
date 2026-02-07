@@ -49,7 +49,7 @@ npm run seed
 
 ### Backend (Render):
 ```
-MONGODB_URI=mongodb+srv://ansarisalman:MD%40sal0341@cluster0.bxf9wgw.mongodb.net/fitness-tracker?retryWrites=true&w=majority
+MONGODB_URI=
 JWT_SECRET=fitness_tracker_secret_key_2024
 PORT=5000
 FRONTEND_URL=https://fitness-diet-traker.vercel.app
