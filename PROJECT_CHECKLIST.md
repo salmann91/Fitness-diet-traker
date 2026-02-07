@@ -62,19 +62,13 @@
 ### User Profile Display
 - [x] Show user info
 - [x] Profile page with edit capability
+- [x] Daily nutrition goals (calories, protein, carbs, fats)
 
-### BMI Calculator
-- [x] Calculate BMI from weight/height
-- [x] Display BMI category
-- [x] Color-coded results
-
-### Weekly Progress
-- [x] Track last 7 days
-- [x] Total calories consumed
-- [x] Total calories burned
-- [x] Workout count
-- [x] Meal count
-- [x] Net calorie balance
+### Dashboard Stats
+- [x] Today's calorie summary (consumed/burned/net/remaining)
+- [x] Visual progress bars for macros
+- [x] Stat cards with icons
+- [x] Real-time goal tracking
 
 ### CRUD Operations
 - [x] Add workouts
@@ -138,14 +132,15 @@ FitnessANDDiet_Tracker/
 │   │   │   ├── MealForm.jsx
 │   │   │   ├── WorkoutForm.jsx
 │   │   │   ├── ItemList.jsx
-│   │   │   ├── BMICard.jsx
-│   │   │   └── WeeklyProgress.jsx
+│   │   │   ├── DashboardStats.jsx
+│   │   │   └── Footer.jsx
 │   │   ├── pages/
 │   │   │   ├── Login.jsx
 │   │   │   ├── Dashboard.jsx
 │   │   │   └── Profile.jsx
 │   │   ├── context/
-│   │   │   └── AuthContext.jsx
+│   │   │   ├── AuthContext.jsx
+│   │   │   └── ThemeContext.jsx
 │   │   ├── services/
 │   │   │   └── api.js
 │   │   ├── App.jsx

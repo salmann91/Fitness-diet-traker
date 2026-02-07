@@ -15,10 +15,10 @@ router.get('/profile', auth, async (req, res) => {
 
 router.put('/profile', auth, async (req, res) => {
   try {
-    const { name, age, weight, height, goal } = req.body;
+    const { name, age, weight, height, goal, dailyCalorieGoal, dailyProteinGoal, dailyCarbsGoal, dailyFatsGoal } = req.body;
     const user = await User.findByIdAndUpdate(
       req.userId,
-      { name, age, weight, height, goal },
+      { name, age, weight, height, goal, dailyCalorieGoal, dailyProteinGoal, dailyCarbsGoal, dailyFatsGoal },
       { new: true }
     ).select('-password');
     res.json(user);
