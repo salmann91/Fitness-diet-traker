@@ -8,7 +8,11 @@ const userSchema = new mongoose.Schema({
   age: Number,
   weight: Number,
   height: Number,
-  goal: String
+  goal: String,
+  dailyCalorieGoal: { type: Number, default: 2000 },
+  dailyProteinGoal: { type: Number, default: 150 },
+  dailyCarbsGoal: { type: Number, default: 250 },
+  dailyFatsGoal: { type: Number, default: 65 }
 }, { timestamps: true });
 
 userSchema.pre('save', async function(next) {

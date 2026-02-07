@@ -4,11 +4,13 @@ import { ThemeContext } from '../context/ThemeContext';
 import MealForm from '../components/MealForm';
 import WorkoutForm from '../components/WorkoutForm';
 import ItemList from '../components/ItemList';
+import DashboardStats from '../components/DashboardStats';
 
 export default function Dashboard() {
   const { isDark } = useContext(ThemeContext);
   const [mealList, setMealList] = useState([]);
   const [workoutList, setWorkoutList] = useState([]);
+  const [profile, setProfile] = useState({});
   const [filters, setFilters] = useState({ search: '', startDate: '', endDate: '' });
   const [showMealSuggestions, setShowMealSuggestions] = useState(false);
   const [showWorkoutSuggestions, setShowWorkoutSuggestions] = useState(false);
@@ -17,12 +19,14 @@ export default function Dashboard() {
   const workoutSuggestions = ['Running', 'Cycling', 'Swimming', 'Yoga', 'Weight Training', 'Push-ups', 'Squats', 'Plank', 'Jumping Jacks', 'Burpees'];
 
   const loadData = async () => {
-    const [mealsData, workoutsData] = await Promise.all([
+    const [mealsData, workoutsData, profileData] = await Promise.all([
       meals.getAll(filters),
-      workouts.getAll(filters)
+      workouts.getAll(filters),
+      users.getProfile()
     ]);
     setMealList(mealsData || []);
     setWorkoutList(workoutsData || []);
+    setProfile(profileData || {});
   };
 
   useEffect(() => { loadData(); }, []);
@@ -41,6 +45,11 @@ export default function Dashboard() {
 
   return (
     <div style={{ maxWidth: '1400px', margin: '0 auto', padding: '30px 20px' }}>
+      <h1 style={{ color: 'white', textAlign: 'center', marginBottom: '10px', fontSize: '32px' }}>💪 Fitness & Diet Tracker</h1>
+      <p style={{ color: 'white', textAlign: 'center', marginBottom: '30px', opacity: 0.9 }}>Track your daily nutrition and fitness goals</p>
+      
+      <DashboardStats meals={mealList} workouts={workoutList} profile={profile} isDark={isDark} />
+      
       <div style={{ ...cardStyle, marginBottom: '30px' }}>
         <h3 style={{ marginBottom: '15px', fontSize: '20px' }}>🔍 Search & Filters</h3>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '15px' }}>
